@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import s from "./App.module.css";
+import Counter from "./components/Counter";
+import {IncButton} from "./components/IncButton";
+import {ResetButton} from "./components/ResetButton";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [count, setCount] = useState(0)
+
+    const onIncCountClickHandler = () => {
+        setCount(count + 1)
+    }
+
+    const onResetCountClickHandler = () => {
+        setCount(0)
+    }
+
+    return (
+        <div className={s.App}>
+            <Counter count={count}/>
+            <div className={s.buttons}>
+                <IncButton
+                    // дизейбл по условию
+                    isDisabled={count === 5}
+                    incName={"inc"}
+                    onIncCountClickHandler={onIncCountClickHandler}
+                />
+                <ResetButton
+                    isDisabled={count === 0}
+                    resetName={"reset"}
+                    count={count}
+                    onResetCountClickHandler={onResetCountClickHandler}
+                />
+            </div>
+        </div>
+    );
 }
 
 export default App;
