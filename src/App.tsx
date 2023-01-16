@@ -10,32 +10,33 @@ function App() {
 
     const [count, setCount] = useState(0)
 
-    // чтобы после перезагрузке странички был в счетчике не нолик и значение из ЛС,то:
-    // получаем значение при первой загрузке = перезагрузке
+    const setItemLocaleStorage = () => {
+        return localStorage.setItem("countValue", JSON.stringify(count))
+
+    }
+// при перезагрузке счечик остается теперь = сохраняется
     useEffect(() => {
-        let countString = localStorage.getItem('counterValue')
+        let countString = localStorage.getItem("countValue")
         if (countString) {
             let newCount = JSON.parse(countString)
-            setCount(newCount)
+            setCount(newCount + 1)
         }
-    }, [])
+        window.addEventListener("storage", setItemLocaleStorage)
 
-    // чтобы при загрузке приложения мы СРАЗУ получали локал, а не по нажатию
-    // на кнопку и так же когда "инкрементим" - добавляем  - оно изменялось в ЛС а не по кнопке
-    // чтобы сразу добавлялось значение используем useEffect() без него никак не сделать":
-    useEffect(() => {
-        localStorage.setItem('counterValue', JSON.stringify(count))
-        // каждый раз когда изменяется count - мы установим его в ЛС
-    }, [count])
+        return () => {
+            window.removeEventListener("storage", setItemLocaleStorage)
+        }
+
+    }, [])
 
     const onIncCountClickHandler = () => {
         setCount(count + 1)
-        localStorage.setItem('counterValue', JSON.stringify(count))
+        setItemLocaleStorage()
     }
 
     const onResetCountClickHandler = () => {
         setCount(0)
-        localStorage.setItem('counterValue', JSON.stringify(count))
+        setItemLocaleStorage()
     }
 
     return (
@@ -43,13 +44,13 @@ function App() {
             <Counter count={count}/>
             <div className={s.buttons}>
                 <Button
-                    name={'inc'}
+                    name={"inc"}
                     // дизейбл по условию
                     isDisabled={count === maxValue}
                     onClick={onIncCountClickHandler}
                 />
                 <Button
-                    name={'reset'}
+                    name={"reset"}
                     isDisabled={count === minValue}
                     onClick={onResetCountClickHandler}
                 />
