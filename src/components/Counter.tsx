@@ -3,14 +3,14 @@ import s from "../App.module.css";
 
 type CounterPropsType = {
     count: number
+    maxValue: number
 }
 
-export const Counter: React.FC<CounterPropsType> = ({count}) => {
+export const Counter: React.FC<CounterPropsType> = ({count, maxValue}) => {
     return (
         <div className={s.timer}>
             <div
-                // условный рендеринг
-                className={count === 5 ? s.red : ' '}>
+                className={count === maxValue ? s.red : ' '}>
                 {count}
             </div>
         </div>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import s from "./App.module.css";
 import Counter from "./components/Counter";
-import {Button} from "./components/Button";
+import {CustomButton} from "./common/SuperButton/CustomButton";
 
 
 function App() {
@@ -12,9 +12,8 @@ function App() {
 
     const setItemLocaleStorage = () => {
         return localStorage.setItem("countValue", JSON.stringify(count))
-
     }
-// при перезагрузке счечик остается теперь = сохраняется
+
     useEffect(() => {
         let countString = localStorage.getItem("countValue")
         if (countString) {
@@ -41,15 +40,17 @@ function App() {
 
     return (
         <div className={s.App}>
-            <Counter count={count}/>
+            <Counter
+                maxValue={maxValue}
+                count={count}/>
             <div className={s.buttons}>
-                <Button
+                <CustomButton
                     name={"inc"}
-                    // дизейбл по условию
                     isDisabled={count === maxValue}
                     onClick={onIncCountClickHandler}
-                />
-                <Button
+                >
+                </CustomButton>
+                <CustomButton
                     name={"reset"}
                     isDisabled={count === minValue}
                     onClick={onResetCountClickHandler}

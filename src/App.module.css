@@ -17,25 +17,26 @@
     background-color: #2dd5f1;
     border: #2dd5f1;
     font-size: 24px;
-
 }
 
 .buttons {
     border-radius: 5px;
-    width: 92%;
-    margin-top: 4px;
-    padding: 7px;
+    margin-top: 3px;
     border: 2px solid #2dd5f1;
 }
 
 .inc {
     background-color: #2dd5f1;
     width: 70px;
+    padding-right: 10px;
+    margin-right: 5px;
 }
 
 .reset {
     background-color: #2dd5f1;
     width: 70px;
+    padding-left: 10px;
+
 }
 
 .red {
