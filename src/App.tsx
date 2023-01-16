@@ -44,12 +44,14 @@ function App() {
                 maxValue={maxValue}
                 count={count}/>
             <div className={s.buttons}>
+
                 <CustomButton
                     name={"inc"}
                     isDisabled={count === maxValue}
                     onClick={onIncCountClickHandler}
                 >
                 </CustomButton>
+
                 <CustomButton
                     name={"reset"}
                     isDisabled={count === minValue}
