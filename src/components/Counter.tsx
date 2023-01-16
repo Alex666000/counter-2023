@@ -5,13 +5,13 @@ type CounterPropsType = {
     count: number
 }
 
-export const Counter: React.FC<CounterPropsType> = (props) => {
+export const Counter: React.FC<CounterPropsType> = ({count}) => {
     return (
         <div className={s.timer}>
             <div
                 // условный рендеринг
-                className={props.count === 5 ? s.red : ' '}>
-                {props.count}
+                className={count === 5 ? s.red : ' '}>
+                {count}
             </div>
         </div>
     );

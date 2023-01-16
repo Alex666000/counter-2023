@@ -1,10 +1,13 @@
 import React, {useState} from "react";
 import s from "./App.module.css";
 import Counter from "./components/Counter";
-import {IncButton} from "./components/IncButton";
-import {ResetButton} from "./components/ResetButton";
+import {Button} from "./components/Button";
+
 
 function App() {
+    const maxValue = 5
+    const minValue = 0
+
     const [count, setCount] = useState(0)
 
     const onIncCountClickHandler = () => {
@@ -19,17 +22,16 @@ function App() {
         <div className={s.App}>
             <Counter count={count}/>
             <div className={s.buttons}>
-                <IncButton
+                <Button
+                    name={'inc'}
                     // дизейбл по условию
-                    isDisabled={count === 5}
-                    incName={"inc"}
-                    onIncCountClickHandler={onIncCountClickHandler}
+                    isDisabled={count === maxValue}
+                    onClick={onIncCountClickHandler}
                 />
-                <ResetButton
+                <Button
+                    name={'reset'}
                     isDisabled={count === 0}
-                    resetName={"reset"}
-                    count={count}
-                    onResetCountClickHandler={onResetCountClickHandler}
+                    onClick={onResetCountClickHandler}
                 />
             </div>
         </div>
