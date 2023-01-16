@@ -24,22 +24,17 @@
     border-radius: 5px;
     width: 92%;
     margin-top: 4px;
-    padding: 5px;
+    padding: 7px;
     border: 2px solid #2dd5f1;
 }
 
 .inc {
     background-color: #2dd5f1;
-    padding: 5px;
-    margin: 0 5px 0 5px;
     width: 70px;
-
 }
 
 .reset {
     background-color: #2dd5f1;
-    padding: 5px;
-    margin: 0 5px 0 5px;
     width: 70px;
 }
 

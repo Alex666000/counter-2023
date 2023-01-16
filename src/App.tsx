@@ -12,10 +12,21 @@ function App() {
 
     const onIncCountClickHandler = () => {
         setCount(count + 1)
+        // в качестве значения записываем в стейт - установили локальную переменную в ЛС
+        // JSON.stringify - любое значение преобразовывает в строку - даже объект
+        localStorage.setItem("counterValue", JSON.stringify(count))
+        // получили локальную переменную с ЛС
+        const countString = localStorage.getItem("counterValue")
+        if (countString) {
+            const newCount = JSON.parse(countString)
+            // записали в ЛС спаршенную строку в значение
+            setCount(newCount)
+        }
     }
 
     const onResetCountClickHandler = () => {
         setCount(0)
+        localStorage.setItem('counterValue', JSON.stringify(count))
     }
 
     return (
@@ -30,7 +41,7 @@ function App() {
                 />
                 <Button
                     name={'reset'}
-                    isDisabled={count === 0}
+                    isDisabled={count === minValue}
                     onClick={onResetCountClickHandler}
                 />
             </div>
