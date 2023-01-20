@@ -1,49 +1,57 @@
 .App {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
     width: 200px;
-    height: 100px;
+    height: 107px;
     border: 2px solid black;
     margin: 60px auto;
     border-radius: 5px;
     background-color: #524b4b;
-    padding: 5px;
+    padding: 8px;
 }
-
-.timer {
+.countersContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.counters {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.counter {
+    width: 100%;
+    height: 100%;
+}
+.display {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     width: 100%;
-    height: 55px;
+    height: 100%;
     border-radius: 10px;
-    background-color: #2dd5f1;
-    border: #2dd5f1;
+    background-color: #524b4b;
+    border: 2px solid #2dd5f1;
     font-size: 24px;
+    margin-top: -5px;
 }
-
 .buttons {
+    display: flex;
+    justify-content: center;
+    width: 200px;
     border-radius: 5px;
     margin-top: 3px;
     border: 2px solid #2dd5f1;
 }
-
-.inc {
-    background-color: #2dd5f1;
-    width: 70px;
-    padding-right: 10px;
-    margin-right: 5px;
-}
-
-.reset {
-    background-color: #2dd5f1;
-    width: 70px;
-    padding-left: 10px;
+.button{
 
 }
-
 .red {
     color: red;
     font-size: 24px;
-
 }

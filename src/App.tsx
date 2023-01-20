@@ -40,12 +40,17 @@ function App() {
 
     return (
         <div className={s.App}>
-            <Counter
-                maxValue={maxValue}
-                count={count}/>
-            <div className={s.buttons}>
+            <div className={s.countersContainer}>
+                <div className={s.counters}>
+                    <div className={s.counter}>
+                        <Counter maxValue={maxValue} count={count}/>
+                    </div>
+                </div>
+            </div>
 
+            <div className={s.buttons}>
                 <CustomButton
+                    className={s.button}
                     name={"inc"}
                     isDisabled={count === maxValue}
                     onClick={onIncCountClickHandler}
@@ -56,7 +61,8 @@ function App() {
                     name={"reset"}
                     isDisabled={count === minValue}
                     onClick={onResetCountClickHandler}
-                />
+                >
+                </CustomButton>
             </div>
         </div>
     );

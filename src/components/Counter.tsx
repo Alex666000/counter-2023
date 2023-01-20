@@ -8,7 +8,7 @@ type CounterPropsType = {
 
 export const Counter: React.FC<CounterPropsType> = ({count, maxValue}) => {
     return (
-        <div className={s.timer}>
+        <div className={s.display}>
             <div
                 className={count === maxValue ? s.red : ' '}>
                 {count}
