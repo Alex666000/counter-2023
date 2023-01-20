@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useState} from "react";
 import s from "./App.module.css";
-import Counter from "./components/Counter";
+import Display from "./components/Counter";
 import {CustomButton} from "./common/SuperButton/CustomButton";
 
 
@@ -8,12 +8,12 @@ const App = () => {
 
     return (
         <div className={s.main}>
-            <div className={s.display}>
-                <div className={s.oneDisplay}>
-                    <Display />
+            <div className={s.countersItems}>
+                <div className={s.oneCounterItem}>
+                    <CounterItem />
                 </div>
-                <div className={s.twoDisplay}>
-                    <Display />
+                <div className={s.twoCounterItem}>
+                    <CounterItem />
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@ const App = () => {
 
 type DisplayPropsType = {}
 
-const Display: FC<DisplayPropsType> = () => {
+const CounterItem: FC<DisplayPropsType> = () => {
     const maxValue = 5
     const minValue = 0
 
@@ -59,10 +59,10 @@ const Display: FC<DisplayPropsType> = () => {
     return (
         <>
             <div className={s.app}>
-                <div className={s.countersContainer}>
-                    <div className={s.counters}>
-                        <div className={s.counter}>
-                            <Counter maxValue={maxValue} count={count}/>
+                <div className={s.displaysContainer}>
+                    <div className={s.displays}>
+                        <div className={s.display}>
+                            <Display maxValue={maxValue} count={count}/>
                         </div>
                     </div>
                 </div>

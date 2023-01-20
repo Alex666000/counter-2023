@@ -4,8 +4,7 @@
     width: 100%;
     height: 100%;
     border: 1px solid black;
-    margin: 60px auto;
-
+    margin: 60px 20px;
 
 }
 
@@ -22,26 +21,23 @@
     padding: 8px;
 }
 
-.display {
+.countersItems {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    align-items: center;
     align-content: stretch;
 }
 
-.oneDisplay {
-    width: 100%;
+.oneCounterItem {
     height: 100%;
 }
 
-.twoDisplay {
-    width: 100%;
+.twoCounterItem {
     height: 100%;
 }
 
-.countersContainer {
+.displaysContainer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,14 +45,16 @@
     height: 100%;
 }
 
-.counters {
+.displays {
     display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
 }
 
-.counter {
+.display {
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 100%;
 }
