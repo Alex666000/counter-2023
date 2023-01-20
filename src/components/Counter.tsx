@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 import s from "../App.module.css";
 
 type CounterPropsType = {
@@ -6,9 +6,9 @@ type CounterPropsType = {
     maxValue: number
 }
 
-export const Counter: React.FC<CounterPropsType> = ({count, maxValue}) => {
+export const Counter: FC<CounterPropsType> = ({count, maxValue}) => {
     return (
-        <div className={s.display}>
+        <div className={s.count}>
             <div
                 className={count === maxValue ? s.red : ' '}>
                 {count}

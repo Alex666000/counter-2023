@@ -1,4 +1,4 @@
-import React, {ButtonHTMLAttributes, DetailedHTMLProps} from "react"
+import React, {ButtonHTMLAttributes, DetailedHTMLProps, FC} from "react"
 import s from "./CustomButton.module.css"
 
 // тип пропсов обычной кнопки, children в котором храниться название кнопки там уже описан
@@ -11,7 +11,7 @@ type CustomButtonPropsType = DefaultButtonPropsType & {
     onClick: () => void
 }
 
-const CustomButton: React.FC<CustomButtonPropsType> = (
+const CustomButton: FC<CustomButtonPropsType> = (
     {
         red, className, name, isDisabled, onClick,
         ...restProps // все остальные пропсы попадут в объект restProps, там же будет children
