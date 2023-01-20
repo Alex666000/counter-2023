@@ -1,28 +1,10 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import s from "./App.module.css";
-import Display from "./components/Counter";
-import {CustomButton} from "./common/SuperButton/CustomButton";
+import {CounterItem_1} from "./components/CounterItem_1";
+import {CounterItem_2} from "./components/CounterItem_2";
 
 
 const App = () => {
-
-    return (
-        <div className={s.main}>
-            <div className={s.countersItems}>
-                <div className={s.oneCounterItem}>
-                    <CounterItem />
-                </div>
-                <div className={s.twoCounterItem}>
-                    <CounterItem />
-                </div>
-            </div>
-        </div>
-    );
-};
-
-type DisplayPropsType = {}
-
-const CounterItem: FC<DisplayPropsType> = () => {
     const maxValue = 5
     const minValue = 0
 
@@ -45,6 +27,7 @@ const CounterItem: FC<DisplayPropsType> = () => {
         }
 
     }, [])
+
 // handles
     const onIncCountClickHandler = () => {
         setCount(count + 1)
@@ -56,35 +39,30 @@ const CounterItem: FC<DisplayPropsType> = () => {
         setItemLocaleStorage()
     }
 
+
     return (
-        <>
-            <div className={s.app}>
-                <div className={s.displaysContainer}>
-                    <div className={s.displays}>
-                        <div className={s.display}>
-                            <Display maxValue={maxValue} count={count}/>
-                        </div>
-                    </div>
+        <div className={s.main}>
+            <div className={s.countersItems}>
+                <div className={s.oneCounterItem}>
+                    <CounterItem_1
+                        minValue={minValue}
+                        maxValue={maxValue}
+                        count={count}
+                        onIncCountClickHandler={onIncCountClickHandler}
+                        onResetCountClickHandler={onResetCountClickHandler}
+                    />
                 </div>
-
-                <div className={s.buttons}>
-                    <CustomButton
-                        className={s.button}
-                        name={"inc"}
-                        isDisabled={count === maxValue}
-                        onClick={onIncCountClickHandler}
-                    >
-                    </CustomButton>
-
-                    <CustomButton
-                        name={"reset"}
-                        isDisabled={count === minValue}
-                        onClick={onResetCountClickHandler}
-                    >
-                    </CustomButton>
+                <div className={s.twoCounterItem}>
+                    <CounterItem_2
+                        minValue={minValue}
+                        maxValue={maxValue}
+                        count={count}
+                        onIncCountClickHandler={onIncCountClickHandler}
+                        onResetCountClickHandler={onResetCountClickHandler}/>
                 </div>
             </div>
-        </>
-    )
-}
+        </div>
+    );
+};
+
 export default App;
