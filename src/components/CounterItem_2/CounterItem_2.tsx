@@ -1,7 +1,7 @@
 import React, {FC} from "react";
-import s from "../App.module.css";
-import {CustomButton} from "../common/SuperButton/CustomButton";
-import {Display_2} from "./Display_2";
+import s from "./CounterItem_2.module.css";
+import {CustomButton} from "../../common/SuperButton/CustomButton";
+import {Display_2} from "./Display_2/Display_2";
 
 type CounterItem_2PropsType = {
     minValue: number
@@ -19,7 +19,7 @@ export const CounterItem_2: FC<CounterItem_2PropsType> = ({
                                                               onResetCountClickHandler,
                                                           }) => {
     return (
-        <div className={s.container}>
+        <>
             <div className={s.header}>
                 <Display_2 count={count}/>
             </div>
@@ -46,6 +46,6 @@ export const CounterItem_2: FC<CounterItem_2PropsType> = ({
                 </div>
 
             </div>
-        </div>
+        </>
     )
 }

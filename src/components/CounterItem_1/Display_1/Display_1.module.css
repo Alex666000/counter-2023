@@ -1,0 +1,23 @@
+.displayContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.displayValue {
+    display: flex;
+    justify-content: space-between;
+}
+
+.displayValue:first-child {
+    margin-bottom: 8px;
+}
+
+.value {
+    color:  #2dd5f1;
+}
+
+
+.input {
+    border-radius: 5px;
+}

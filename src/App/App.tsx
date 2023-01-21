@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import s from "./App.module.css";
-import {CounterItem_1} from "./components/CounterItem_1";
-import {CounterItem_2} from "./components/CounterItem_2";
+import {CounterItem_1} from "../components/CounterItem_1/CounterItem_1";
+import {CounterItem_2} from "../components/CounterItem_2/CounterItem_2";
 
 
 const App = () => {
@@ -39,11 +39,8 @@ const App = () => {
         setItemLocaleStorage()
     }
 
-
     return (
-        <div className={s.mainBlock}>
             <div className={s.wrapperCounters}>
-                {/*первый счетчик*/}
                 <div className={s.wrapperItem}>
                     <CounterItem_1
                         minValue={minValue}
@@ -54,7 +51,6 @@ const App = () => {
                     />
                 </div>
 
-                    {/*второй счетчик*/}
                 <div className={s.wrapperItem}>
                     <CounterItem_2
                         minValue={minValue}
@@ -67,7 +63,6 @@ const App = () => {
 
 
             </div>
-        </div>
     );
 };
 

@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import s from "../App.module.css";
+import s from "../../../App/App.module.css";
 
 type DisplayPropsType = {
     count: number

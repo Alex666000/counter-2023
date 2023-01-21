@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import s from "../App.module.css";
+import s from "../../../App/App.module.css";
 
 type Display_2_PropsType = {
     count: number
@@ -7,7 +7,7 @@ type Display_2_PropsType = {
 
 export const Display_2: FC<Display_2_PropsType> = ({count}) => {
     return (
-        <div className={s.displayContainer_2}>
+        <div className={s.display}>
             {count}
         </div>
     );

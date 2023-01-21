@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from "react";
-import s from "../App.module.css";
-import {Display_1} from "./Display_1";
-import {CustomButton} from "../common/SuperButton/CustomButton";
+import s from "./CounterItem_1.module.css"
+import {Display_1} from "./Display_1/Display_1";
+import {CustomButton} from "../../common/SuperButton/CustomButton";
 
 type CounterItem_1PropsType = {
     minValue: number
