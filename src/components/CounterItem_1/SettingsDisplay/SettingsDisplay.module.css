@@ -6,7 +6,8 @@
 
 .displayValue {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
 .displayValue:first-child {
@@ -15,6 +16,7 @@
 
 .value {
     color:  #2dd5f1;
+
 }
 
 

@@ -42,13 +42,7 @@ const App = () => {
     return (
             <div className={s.wrapperCounters}>
                 <div className={s.wrapperItem}>
-                    <CounterItem_1
-                        minValue={minValue}
-                        maxValue={maxValue}
-                        count={count}
-                        onIncCountClickHandler={onIncCountClickHandler}
-                        onResetCountClickHandler={onResetCountClickHandler}
-                    />
+                    <CounterItem_1 />
                 </div>
 
                 <div className={s.wrapperItem}>

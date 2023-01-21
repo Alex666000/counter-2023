@@ -21,7 +21,7 @@ export const CounterItem_2: FC<CounterItem_2PropsType> = ({
     return (
         <>
             <div className={s.header}>
-                <Display_2 count={count}/>
+                <Display_2 count={count} maxValue={maxValue}/>
             </div>
 
             <div className={s.footer}>
