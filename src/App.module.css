@@ -1,78 +1,48 @@
-.main {
+.mainBlock {
     display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    border: 1px solid black;
-    margin: 60px 20px;
-
+    justify-content: space-around;
+    margin: 100px auto;
+    border: 2px solid #2dd5f1;
+    width: 643px;
 }
 
-.app {
+.containerForCounters {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 200px;
-    height: 107px;
-    border: 2px solid black;
-    margin: 60px 20px;
-    border-radius: 5px;
-    background-color: #524b4b;
-    padding: 8px;
-}
-
-.countersItems {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-content: stretch;
-}
-
-.oneCounterItem {
-    height: 100%;
-}
-
-.twoCounterItem {
-    height: 100%;
-}
-
-.displaysContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
-
-.displays {
-    display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
+    margin: 50px 50px;
 }
 
-.display {
+.containerCounterItem_1 {
     display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 530px;
+    border: 2px solid #2dd5f1;
 }
 
-.count {
+.displayCounter_1 {
+    width: 80%;
+    height: 80%;
+}
+
+.displayContainer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 90%;
     border-radius: 10px;
     background-color: #524b4b;
-    border: 2px solid #2dd5f1;
     font-size: 24px;
-    margin-top: -5px;
+    margin: 50px 50px;
 }
 
-.buttons {
+.displayValue {
+
+}
+
+.customButtons {
     display: flex;
     justify-content: center;
     width: 200px;
@@ -83,6 +53,10 @@
 
 .button {
 
+}
+.input {
+    display: inline;
+    width: 250px;
 }
 
 .red {

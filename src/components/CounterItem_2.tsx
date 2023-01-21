@@ -16,15 +16,15 @@ export const CounterItem_2: FC<CounterItem_2PropsType> = ({minValue, maxValue, c
     return (
         <>
             <div className={s.app}>
-                <div className={s.displaysContainer}>
+                <div className={s.containerCounterItem_1}>
                     <div className={s.displays}>
-                        <div className={s.display}>
+                        <div className={s.displayCounter_1}>
                             <Display maxValue={maxValue} count={count}/>
                         </div>
                     </div>
                 </div>
 
-                <div className={s.buttons}>
+                <div className={s.customButtons}>
                     <CustomButton
                         className={s.button}
                         name={"inc"}

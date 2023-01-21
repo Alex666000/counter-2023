@@ -8,11 +8,16 @@ type DisplayPropsType = {
 
 export const Display: FC<DisplayPropsType> = ({count, maxValue}) => {
     return (
-        <div className={s.count}>
-            <div
-                className={count === maxValue ? s.red : ' '}>
-                {count}
+        <div className={s.displayContainer}>
+            <div className={s.displayValue}>
+                <span>max value: </span> <input className={s.input} type="number"/>
             </div>
+            <div className={s.displayValue}>
+                <span>start value: </span> <input className={s.input} type="number"/>
+            </div>
+
         </div>
     );
 };
+
+// className={count === maxValue ? s.red : ' '}>
