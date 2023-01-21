@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useState} from "react";
 import s from "../App.module.css";
-import {Display} from "./Display";
+import {Display_1} from "./Display_1";
 import {CustomButton} from "../common/SuperButton/CustomButton";
 
 type CounterItem_1PropsType = {
@@ -18,25 +18,18 @@ export const CounterItem_1: FC<CounterItem_1PropsType> = ({
                                                               onIncCountClickHandler,
                                                               onResetCountClickHandler
                                                           }) => {
-
     return (
         <>
-            <div className={s.containerCounterItem_1}>
-                <div className={s.displayCounter_1}>
-                    <Display
-                        maxValue={maxValue}
-                        count={count}/>
-                </div>
+            <div className={s.header}>
+                <Display_1 maxValue={maxValue} count={count} />
             </div>
-
-            <div className={s.customButtons}>
+            <div className={s.footer}>
                 <CustomButton
-                    className={s.button}
-                    name={"SET"}
-                    isDisabled={count === maxValue}
-                    onClick={onIncCountClickHandler}
-                >
-                </CustomButton>
+                className={s.button}
+                name={"SET"}
+                isDisabled={count === maxValue}
+                onClick={onIncCountClickHandler}
+                />
             </div>
         </>
     )

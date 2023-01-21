@@ -1,7 +1,7 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC} from "react";
 import s from "../App.module.css";
-import {Display} from "./Display";
 import {CustomButton} from "../common/SuperButton/CustomButton";
+import {Display_2} from "./Display_2";
 
 type CounterItem_2PropsType = {
     minValue: number
@@ -11,20 +11,22 @@ type CounterItem_2PropsType = {
     onResetCountClickHandler: () => void
 }
 
-export const CounterItem_2: FC<CounterItem_2PropsType> = ({minValue, maxValue, count, onIncCountClickHandler, onResetCountClickHandler}) => {
-
+export const CounterItem_2: FC<CounterItem_2PropsType> = ({
+                                                              minValue,
+                                                              maxValue,
+                                                              count,
+                                                              onIncCountClickHandler,
+                                                              onResetCountClickHandler,
+                                                          }) => {
     return (
-        <>
-            <div className={s.app}>
-                <div className={s.containerCounterItem_1}>
-                    <div className={s.displays}>
-                        <div className={s.displayCounter_1}>
-                            <Display maxValue={maxValue} count={count}/>
-                        </div>
-                    </div>
-                </div>
+        <div className={s.container}>
+            <div className={s.header}>
+                <Display_2 count={count}/>
+            </div>
 
-                <div className={s.customButtons}>
+            <div className={s.footer}>
+
+                <div className={s.footerButton}>
                     <CustomButton
                         className={s.button}
                         name={"inc"}
@@ -32,7 +34,9 @@ export const CounterItem_2: FC<CounterItem_2PropsType> = ({minValue, maxValue, c
                         onClick={onIncCountClickHandler}
                     >
                     </CustomButton>
+                </div>
 
+                <div className={s.footerButton}>
                     <CustomButton
                         name={"reset"}
                         isDisabled={count === minValue}
@@ -40,7 +44,8 @@ export const CounterItem_2: FC<CounterItem_2PropsType> = ({minValue, maxValue, c
                     >
                     </CustomButton>
                 </div>
+
             </div>
-        </>
+        </div>
     )
 }

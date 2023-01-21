@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import s from "./App.module.css";
 import {CounterItem_1} from "./components/CounterItem_1";
+import {CounterItem_2} from "./components/CounterItem_2";
 
 
 const App = () => {
@@ -41,7 +42,9 @@ const App = () => {
 
     return (
         <div className={s.mainBlock}>
-                <div className={s.containerForCounters}>
+            <div className={s.wrapperCounters}>
+                {/*первый счетчик*/}
+                <div className={s.wrapperItem}>
                     <CounterItem_1
                         minValue={minValue}
                         maxValue={maxValue}
@@ -50,14 +53,20 @@ const App = () => {
                         onResetCountClickHandler={onResetCountClickHandler}
                     />
                 </div>
-                <div>
-                    {/*<CounterItem_2*/}
-                    {/*    minValue={minValue}*/}
-                    {/*    maxValue={maxValue}*/}
-                    {/*    count={count}*/}
-                    {/*    onIncCountClickHandler={onIncCountClickHandler}*/}
-                    {/*    onResetCountClickHandler={onResetCountClickHandler}/>*/}
+
+                    {/*второй счетчик*/}
+                <div className={s.wrapperItem}>
+                    <CounterItem_2
+                        minValue={minValue}
+                        maxValue={maxValue}
+                        count={count}
+                        onIncCountClickHandler={onIncCountClickHandler}
+                        onResetCountClickHandler={onResetCountClickHandler}
+                    />
                 </div>
+
+
+            </div>
         </div>
     );
 };

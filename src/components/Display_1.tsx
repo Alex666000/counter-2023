@@ -6,14 +6,14 @@ type DisplayPropsType = {
     maxValue: number
 }
 
-export const Display: FC<DisplayPropsType> = ({count, maxValue}) => {
+export const Display_1: FC<DisplayPropsType> = ({count, maxValue}) => {
     return (
         <div className={s.displayContainer}>
             <div className={s.displayValue}>
-                <span>max value: </span> <input className={s.input} type="number"/>
+                <span className={s.value}>max value: </span> <input className={s.input} type="number"/>
             </div>
             <div className={s.displayValue}>
-                <span>start value: </span> <input className={s.input} type="number"/>
+                <span className={s.value}>start value: </span> <input className={s.input} type="number"/>
             </div>
 
         </div>
