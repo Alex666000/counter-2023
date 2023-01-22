@@ -1,14 +1,21 @@
 import React, {useEffect, useState} from "react";
 import s from "./App.module.css";
-import {CounterItem_1} from "../components/CounterItem_1/CounterItem_1";
-import {CounterItem_2} from "../components/CounterItem_2/CounterItem_2";
+import {WithSettingsCounter} from "../components/WithSettingsCounter/WithSettingsCounter";
+import {Counter} from "../components/Counter/Counter";
+import {SettingsDisplay} from "../components/WithSettingsCounter/SettingsDisplay/SettingsDisplay";
 
 
 const App = () => {
     const maxValue = 5
     const minValue = 0
+// стал...  startInputValue === -1
+    const [startInputValue, setStartInputValue] = useState(0)
+
+    const [isError, setIsError] = useState(false)
 
     const [count, setCount] = useState(0)
+
+
 
 // localStorage logic
     const setItemLocaleStorage = () => {
@@ -29,34 +36,42 @@ const App = () => {
     }, [])
 
 // handles
-    const onIncCountClickHandler = () => {
+    const onClickIncrementHandler = () => {
         setCount(count + 1)
         setItemLocaleStorage()
     }
 
-    const onResetCountClickHandler = () => {
+    const onClickResetHandler = () => {
         setCount(0)
         setItemLocaleStorage()
     }
 
+
     return (
-            <div className={s.wrapperCounters}>
-                <div className={s.wrapperItem}>
-                    <CounterItem_1 />
-                </div>
-
-                <div className={s.wrapperItem}>
-                    <CounterItem_2
-                        minValue={minValue}
-                        maxValue={maxValue}
-                        count={count}
-                        onIncCountClickHandler={onIncCountClickHandler}
-                        onResetCountClickHandler={onResetCountClickHandler}
-                    />
-                </div>
-
-
+        <div className={s.wrapperCounters}>
+            <div className={s.wrapperItem}>
+                <WithSettingsCounter
+                    isError={false}
+                    startInputValue={startInputValue}
+                    setStartInputValue={setStartInputValue}
+                    setIsError={setIsError}
+                />
             </div>
+
+            <div className={s.wrapperItem}>
+                <Counter
+                    minValue={minValue}
+                    maxValue={maxValue}
+                    count={count}
+                    isError={false}
+                    startInputValue={startInputValue}
+                    onClickIncrementHandler={onClickIncrementHandler}
+                    onClickResetHandler={onClickResetHandler}
+                />
+            </div>
+
+
+        </div>
     );
 };
 

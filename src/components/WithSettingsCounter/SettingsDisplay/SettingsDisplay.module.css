@@ -23,3 +23,13 @@
 .input {
     border-radius: 5px;
 }
+
+.input.error {
+    /*background-color: #dd3355;*/
+    border: 1px solid red;
+    color: red;
+}
+
+.error {
+    color: red;
+}

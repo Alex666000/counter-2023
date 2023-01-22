@@ -1,5 +1,5 @@
 import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent} from 'react'
-import s from './SuperInputText.module.css'
+import s from './CustomInput.module.css'
 
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 // typesProps:
@@ -10,9 +10,10 @@ type SuperInputTextPropsType = DefaultInputPropsType & { // и + ещё проп
     spanClassName?: string
 }
 // present component:
-const SuperInputText: React.FC<SuperInputTextPropsType> = (
+const CustomInput: React.FC<SuperInputTextPropsType> = (
     {
-        type, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
+        type,
+        title,// достаём и игнорируем чтоб нельзя было задать другой тип инпута
         onChange, onChangeText,
         onKeyPress, onEnter,
         error, className, spanClassName,
@@ -39,8 +40,9 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
 
     return (
         <>
+            <span className={s.value}>{title}: </span>
             <input
-                type={'text'}
+                type={'number'}
                 onChange={onChangeCallback}
                 onKeyPress={onKeyPressCallback}
                 className={finalInputClassName}
@@ -52,4 +54,4 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
     )
 }
 
-export default SuperInputText
+export default CustomInput
