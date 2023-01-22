@@ -24,7 +24,11 @@ export const WithSettingsCounter: FC<WithSettingsCounterPropsType> = ({
                                                                           setIsError,
                                                                           setIsDisabled,
                                                                       }) => {
-    const checkStartInputValue = startInputValue >= 0 ? isDisabled : !isDisabled
+    // const checkStartInputValue = startInputValue >= 0 ? isDisabled : !isDisabled
+
+    const isErrorForInputsValues = maxInputValue < 0 || startInputValue < 0 || maxInputValue <= startInputValue
+       ? isDisabled : !isDisabled
+
 
     return (
         <>
@@ -41,7 +45,7 @@ export const WithSettingsCounter: FC<WithSettingsCounterPropsType> = ({
             </div>
             <div className={s.footer}>
                 <CustomButton
-                    isDisabled={checkStartInputValue}
+                    isDisabled={isErrorForInputsValues}
                     className={s.button}
                     name={"SET"}
                     onClick={() => {
