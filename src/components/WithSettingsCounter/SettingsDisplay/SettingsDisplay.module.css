@@ -22,14 +22,15 @@
 
 .input {
     border-radius: 5px;
+    border: 1px solid black;
 }
 
-.input.error {
+.error {
     /*background-color: #dd3355;*/
     border: 1px solid red;
-    color: red;
 }
 
 .error {
     color: red;
+    background-color: #f19bac;
 }

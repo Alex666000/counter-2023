@@ -11,12 +11,12 @@ type SettingsDisplayPropsType = {
 }
 
 export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
-                                                          isError,
-                                                          startInputValue,
-                                                          setIsDisabled,
-                                                          setStartInputValue,
-                                                          setIsError
-                                                      }) => {
+                                                                  isError,
+                                                                  startInputValue,
+                                                                  setIsDisabled,
+                                                                  setStartInputValue,
+                                                                  setIsError
+                                                              }) => {
     const [maxInputValue, setMaxInputValue] = useState(5)
 // сюда пришел -1 - isError станет true
     isError = startInputValue < 0 || maxInputValue <= startInputValue
@@ -31,9 +31,13 @@ export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
         const newStartInputValue = +e.currentTarget.value
         setStartInputValue(newStartInputValue)
 
+        if (newStartInputValue < 0) {
+            setIsDisabled(true)
+        }
+
     }
 // т.к isError === true - применится класс к CustomInput у SettingsDisplay
-    const isErrorClassName = isError ? `${s.input} ${s.error}` : s.input
+    const isErrorClassName = startInputValue < 0 && isError ? s.error : s.input
 
     return (
         <div className={s.displayContainer}>
