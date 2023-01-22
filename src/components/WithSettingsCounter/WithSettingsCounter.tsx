@@ -34,6 +34,7 @@ export const WithSettingsCounter: FC<WithSettingsCounterPropsType> = ({
         <>
             <div className={s.header}>
                 <SettingsDisplay
+                    isErrorForInputsValues={isErrorForInputsValues}
                     startInputValue={startInputValue}
                     maxInputValue={maxInputValue}
                     isError

@@ -7,6 +7,7 @@ type SettingsDisplayPropsType = {
     startInputValue: number
     maxInputValue: number
     isError: boolean
+    isErrorForInputsValues: boolean
     setIsDisabled: (value: boolean) => void
     setStartInputValue: (value: number) => void
     setMaxInputValue: (value: number) => void
@@ -15,6 +16,7 @@ type SettingsDisplayPropsType = {
 
 export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
                                                                   isError,
+                                                                  isErrorForInputsValues,
                                                                   startInputValue,
                                                                   maxInputValue,
                                                                   setIsDisabled,
@@ -37,7 +39,10 @@ export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
         setStartInputValue(newStartInputValue)
     }
 // т.к isError === true - применится класс к CustomInput у SettingsDisplay
-    const isErrorClassName = startInputValue < 0 && isError ? s.error : s.input
+    const isErrorClassName = startInputValue < 0 && isError || startInputValue === maxInputValue
+        ? s.error
+        : s.input
+
 
     return (
         <div className={s.displayContainer}>
@@ -45,7 +50,7 @@ export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
                 {/* max value*/}
                 <CustomInput
                     title={"max value"}
-                    className={s.input}
+                    className={isErrorForInputsValues ? s.error : s.input}
                     value={maxInputValue}
                     onChange={onMaxValueInputChange}
                 />
@@ -63,6 +68,8 @@ export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
         </div>
     );
 };
+// isErrorForInputsValues ? s.error :
+
 // className={error ? s.input + '' + s.error : ``}
 
 // className={count === maxValue ? s.red : ' '}>

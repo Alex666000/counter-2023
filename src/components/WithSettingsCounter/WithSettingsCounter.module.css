@@ -17,3 +17,7 @@
     margin-top: 10px;
 }
 
+.error {
+    color: #dd3355;
+    background-color: #f19bac;
+}

@@ -22,6 +22,9 @@ export const Display: FC<Display> = ({
                                          setIsDisabled,
                                          setMaxInputValue,
                                      }) => {
+    const isErrorForInputsValues = maxInputValue < 0 || startInputValue < 0 || maxInputValue <= startInputValue
+        ? isDisabled : !isDisabled
+
     const isMaxCountValue = count === maxValue ? s.red : " ";
 
     const isCountErrorClassName = count === maxValue ? s.error : " ";
@@ -36,7 +39,7 @@ export const Display: FC<Display> = ({
 
     return (
         <div className={isMaxCountValue}>
-            {startInputValue < 0
+            {isErrorForInputsValues
                 ? <div
                     className={s.error}>Некорректное значение
                 </div>
