@@ -1,23 +1,28 @@
 import React, {ChangeEvent, FC, useState} from "react";
 import s from "./SettingsDisplay.module.css";
 import CustomInput from "../../../common/CustomInput/CustomInput";
+import {isDisabled} from "@testing-library/user-event/dist/utils";
 
 type SettingsDisplayPropsType = {
     startInputValue: number
+    maxInputValue: number
     isError: boolean
     setIsDisabled: (value: boolean) => void
     setStartInputValue: (value: number) => void
+    setMaxInputValue: (value: number) => void
     setIsError?: (value: boolean) => void
 }
 
 export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
                                                                   isError,
                                                                   startInputValue,
+                                                                  maxInputValue,
                                                                   setIsDisabled,
                                                                   setStartInputValue,
+                                                                  setMaxInputValue,
                                                                   setIsError
                                                               }) => {
-    const [maxInputValue, setMaxInputValue] = useState(5)
+
 // сюда пришел -1 - isError станет true
     isError = startInputValue < 0 || maxInputValue <= startInputValue
 
@@ -27,14 +32,9 @@ export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
     }
 // редактировать согласно строки 11-12 App.tsx
     const onStartValueInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setIsDisabled(false)
+        setIsDisabled(!isDisabled)
         const newStartInputValue = +e.currentTarget.value
         setStartInputValue(newStartInputValue)
-
-        if (newStartInputValue < 0) {
-            setIsDisabled(true)
-        }
-
     }
 // т.к isError === true - применится класс к CustomInput у SettingsDisplay
     const isErrorClassName = startInputValue < 0 && isError ? s.error : s.input

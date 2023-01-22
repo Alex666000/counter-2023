@@ -11,6 +11,11 @@ type CounterPropsType = {
     onClickIncrementHandler: () => void
     onClickResetHandler: () => void
     startInputValue: number
+    maxInputValue: number
+    isDisabled: boolean
+    setIsDisabled: (value: boolean) => void
+    setMaxInputValue: (value: number) => void
+
 }
 
 export const Counter: FC<CounterPropsType> = ({
@@ -18,18 +23,27 @@ export const Counter: FC<CounterPropsType> = ({
                                                   maxValue,
                                                   count,
                                                   isError,
+                                                  isDisabled,
                                                   startInputValue,
+                                                  maxInputValue,
                                                   onClickIncrementHandler,
                                                   onClickResetHandler,
+                                                  setIsDisabled,
+                                                  setMaxInputValue,
                                               }) => {
     return (
         <>
             <div className={s.header}>
                 <Display
+                    isDisabled
                     count={count}
                     maxValue={maxValue}
-                    isError={true}
-                    startInputValue={startInputValue}/>
+                    isError
+                    startInputValue={startInputValue}
+                    maxInputValue={maxInputValue}
+                    setIsDisabled={setIsDisabled}
+                    setMaxInputValue={setMaxInputValue}
+                />
             </div>
 
             <div className={s.footer}>

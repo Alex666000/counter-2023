@@ -2,19 +2,18 @@ import React, {useEffect, useState} from "react";
 import s from "./App.module.css";
 import {WithSettingsCounter} from "../components/WithSettingsCounter/WithSettingsCounter";
 import {Counter} from "../components/Counter/Counter";
-import {SettingsDisplay} from "../components/WithSettingsCounter/SettingsDisplay/SettingsDisplay";
 
 
 const App = () => {
-    const maxValue = 5
-    const minValue = 0
+    const maxCountValue = 5
+    const minCountValue = 0
 // стал...  startInputValue === -1
     const [startInputValue, setStartInputValue] = useState(0)
+    const [maxInputValue, setMaxInputValue] = useState(5)
 
     const [isError, setIsError] = useState(false)
-
     const [count, setCount] = useState(0)
-
+    const [isDisabled, setIsDisabled] = useState(false)
 
 
 // localStorage logic
@@ -51,22 +50,30 @@ const App = () => {
         <div className={s.wrapperCounters}>
             <div className={s.wrapperItem}>
                 <WithSettingsCounter
-                    isError={false}
+                    isError
+                    isDisabled
                     startInputValue={startInputValue}
+                    maxInputValue={maxInputValue}
                     setStartInputValue={setStartInputValue}
+                    setMaxInputValue={setMaxInputValue}
                     setIsError={setIsError}
+                    setIsDisabled={setIsDisabled}
                 />
             </div>
 
             <div className={s.wrapperItem}>
                 <Counter
-                    minValue={minValue}
-                    maxValue={maxValue}
+                    minValue={minCountValue}
+                    maxValue={maxCountValue}
                     count={count}
-                    isError={false}
+                    isError
+                    isDisabled
                     startInputValue={startInputValue}
+                    maxInputValue={maxInputValue}
                     onClickIncrementHandler={onClickIncrementHandler}
                     onClickResetHandler={onClickResetHandler}
+                    setIsDisabled={setIsDisabled}
+                    setMaxInputValue={setMaxInputValue}
                 />
             </div>
 

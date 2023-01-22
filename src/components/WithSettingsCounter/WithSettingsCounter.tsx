@@ -5,33 +5,43 @@ import {CustomButton} from "../../common/CustomButton/CustomButton";
 
 type WithSettingsCounterPropsType = {
     startInputValue: number
+    maxInputValue: number
     isError: boolean
+    isDisabled: boolean
     setStartInputValue: (value: number) => void
+    setMaxInputValue: (value: number) => void
     setIsError: (value: boolean) => void
+    setIsDisabled: (value: boolean) => void
 }
 
 export const WithSettingsCounter: FC<WithSettingsCounterPropsType> = ({
                                                                           isError,
+                                                                          isDisabled,
                                                                           startInputValue,
+                                                                          maxInputValue,
                                                                           setStartInputValue,
-                                                                          setIsError
+                                                                          setMaxInputValue,
+                                                                          setIsError,
+                                                                          setIsDisabled,
                                                                       }) => {
-    const [isDisabled, setIsDisabled] = useState(true)
+    const checkStartInputValue = startInputValue >= 0 ? isDisabled : !isDisabled
 
     return (
         <>
             <div className={s.header}>
                 <SettingsDisplay
                     startInputValue={startInputValue}
-                    isError={true}
+                    maxInputValue={maxInputValue}
+                    isError
                     setIsDisabled={setIsDisabled}
                     setStartInputValue={setStartInputValue}
+                    setMaxInputValue={setMaxInputValue}
                     setIsError={setIsError}
                 />
             </div>
             <div className={s.footer}>
                 <CustomButton
-                    isDisabled={isDisabled}
+                    isDisabled={checkStartInputValue}
                     className={s.button}
                     name={"SET"}
                     onClick={() => {
