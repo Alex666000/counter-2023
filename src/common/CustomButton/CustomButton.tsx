@@ -13,7 +13,10 @@ type CustomButtonPropsType = DefaultButtonPropsType & {
 
 const CustomButton: FC<CustomButtonPropsType> = (
     {
-        red, className, name, isDisabled, onClick,
+        red,
+        className,
+        name, isDisabled,
+        onClick,
         ...restProps // все остальные пропсы попадут в объект restProps, там же будет children
     }
 ) => {
@@ -24,8 +27,8 @@ const CustomButton: FC<CustomButtonPropsType> = (
             className={finalClassName}
             name={name}
             disabled={isDisabled}
-            onClick={() => onClick()}>
-
+            onClick={onClick}
+        >
             {name}
         </button>
     )

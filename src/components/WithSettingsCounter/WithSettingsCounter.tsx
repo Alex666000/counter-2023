@@ -12,6 +12,7 @@ type WithSettingsCounterPropsType = {
     setMaxInputValue: (value: number) => void
     setIsError: (value: boolean) => void
     setIsDisabled: (value: boolean) => void
+    setDisplayValues: () => void
 }
 
 export const WithSettingsCounter: FC<WithSettingsCounterPropsType> = ({
@@ -23,6 +24,8 @@ export const WithSettingsCounter: FC<WithSettingsCounterPropsType> = ({
                                                                           setMaxInputValue,
                                                                           setIsError,
                                                                           setIsDisabled,
+                                                                          setDisplayValues,
+
                                                                       }) => {
     // const checkStartInputValue = startInputValue >= 0 ? isDisabled : !isDisabled
 
@@ -41,7 +44,6 @@ export const WithSettingsCounter: FC<WithSettingsCounterPropsType> = ({
                     setIsDisabled={setIsDisabled}
                     setStartInputValue={setStartInputValue}
                     setMaxInputValue={setMaxInputValue}
-                    setIsError={setIsError}
                 />
             </div>
             <div className={s.footer}>
@@ -49,8 +51,7 @@ export const WithSettingsCounter: FC<WithSettingsCounterPropsType> = ({
                     isDisabled={isErrorForInputsValues}
                     className={s.button}
                     name={"SET"}
-                    onClick={() => {
-                    }}
+                    onClick={setDisplayValues}
                 />
             </div>
         </>

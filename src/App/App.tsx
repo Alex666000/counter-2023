@@ -45,6 +45,12 @@ const App = () => {
         setItemLocaleStorage()
     }
 
+    const setDisplayValues = () => {
+        alert('hello')
+        setStartInputValue(startInputValue)
+        setMaxInputValue(maxInputValue)
+    }
+
 
     return (
         <div className={s.wrapperCounters}>
@@ -58,6 +64,7 @@ const App = () => {
                     setMaxInputValue={setMaxInputValue}
                     setIsError={setIsError}
                     setIsDisabled={setIsDisabled}
+                    setDisplayValues={setDisplayValues}
                 />
             </div>
 

@@ -43,10 +43,12 @@ export const Display: FC<Display> = ({
                 ? <div
                     className={s.error}>Некорректное значение
                 </div>
-                : <div
-                    className={isCountErrorClassName}>
-                    {checkInputsValues && <b>Установите значение и нажмите кнопку Set</b>}
-                </div>
+                : startInputValue >= 0 && maxInputValue > 0
+                    ? <div
+                        className={isCountErrorClassName}>
+                        {checkInputsValues && <b>Установите значение и нажмите кнопку Set</b>}
+                    </div>
+                    : <div>{startInputValue}</div>
             }
         </div>
     );

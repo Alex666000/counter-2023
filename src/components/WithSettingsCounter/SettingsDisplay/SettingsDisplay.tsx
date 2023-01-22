@@ -11,7 +11,7 @@ type SettingsDisplayPropsType = {
     setIsDisabled: (value: boolean) => void
     setStartInputValue: (value: number) => void
     setMaxInputValue: (value: number) => void
-    setIsError?: (value: boolean) => void
+    setNewInputsValues?: (value: boolean) => void
 }
 
 export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
@@ -22,24 +22,24 @@ export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
                                                                   setIsDisabled,
                                                                   setStartInputValue,
                                                                   setMaxInputValue,
-                                                                  setIsError
                                                               }) => {
 
 // сюда пришел -1 - isError станет true
     isError = startInputValue < 0 || maxInputValue <= startInputValue
 
     const onMaxValueInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setIsDisabled(false)
+        setIsDisabled(!isDisabled)
+        const newStartInputValue = +e.currentTarget.value
         setMaxInputValue(Number(e.currentTarget.value))
     }
-// редактировать согласно строки 11-12 App.tsx
+
     const onStartValueInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         setIsDisabled(!isDisabled)
         const newStartInputValue = +e.currentTarget.value
         setStartInputValue(newStartInputValue)
     }
 // т.к isError === true - применится класс к CustomInput у SettingsDisplay
-    const isErrorClassName = startInputValue < 0 && isError || startInputValue === maxInputValue
+    const isErrorStartInputClassName = startInputValue < 0 && isError || startInputValue === maxInputValue
         ? s.error
         : s.input
 
@@ -59,7 +59,7 @@ export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
                 {/* start value*/}
                 <CustomInput
                     title={"start value"}
-                    className={isErrorClassName}
+                    className={isErrorStartInputClassName}
                     value={startInputValue}
                     onChange={onStartValueInputChange}
                 />
