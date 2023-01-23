@@ -2,14 +2,12 @@ import React, {useEffect, useState} from "react";
 import s from "./App.module.css";
 import {WithSettingsCounter} from "../components/WithSettingsCounter/WithSettingsCounter";
 import {Counter} from "../components/Counter/Counter";
+import {useLocalStorage} from "../hooks/useLocaLstorage";
 
 
 const App = () => {
     const maxCountValue = 5
     const minCountValue = 0
-// стал...  startInputValue === -1
-    const [startInputValue, setStartInputValue] = useState(0)
-    const [maxInputValue, setMaxInputValue] = useState(5)
 
     const [isError, setIsError] = useState(false)
     const [count, setCount] = useState(0)
@@ -17,52 +15,33 @@ const App = () => {
 
 
 // localStorage logic
-    const setItemLocaleStorage = () => {
-        return localStorage.setItem("countValue", JSON.stringify(count))
-    }
-    useEffect(() => {
-        let countString = localStorage.getItem("countValue")
-        if (countString) {
-            let newCount = JSON.parse(countString)
-            setCount(newCount + 1)
-        }
-        window.addEventListener("storage", setItemLocaleStorage)
-
-        return () => {
-            window.removeEventListener("storage", setItemLocaleStorage)
-        }
-
-    }, [])
-
+    const [startInputValue, setStartInputValue] = useLocalStorage("startInputValue", 0)
+    const [maxInputValue, setMaxInputValue] = useLocalStorage("maxInputValue", 5)
 // handles
     const onClickIncrementHandler = () => {
         setCount(count + 1)
-        setItemLocaleStorage()
     }
 
     const onClickResetHandler = () => {
         setCount(0)
-        setItemLocaleStorage()
     }
 
     const setDisplayValues = () => {
-        alert('hello')
         setStartInputValue(startInputValue)
+        setCount(startInputValue)
         setMaxInputValue(maxInputValue)
+        // установить LS...
     }
-
 
     return (
         <div className={s.wrapperCounters}>
             <div className={s.wrapperItem}>
                 <WithSettingsCounter
-                    isError
                     isDisabled
                     startInputValue={startInputValue}
                     maxInputValue={maxInputValue}
                     setStartInputValue={setStartInputValue}
                     setMaxInputValue={setMaxInputValue}
-                    setIsError={setIsError}
                     setIsDisabled={setIsDisabled}
                     setDisplayValues={setDisplayValues}
                 />
@@ -83,8 +62,6 @@ const App = () => {
                     setMaxInputValue={setMaxInputValue}
                 />
             </div>
-
-
         </div>
     );
 };

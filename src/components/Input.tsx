@@ -54,4 +54,4 @@ const Input:FC<InputNumberPropsType> = (
     );
 };
 
-export default Input;
+export {Input};

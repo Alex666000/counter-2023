@@ -6,23 +6,19 @@ import {CustomButton} from "../../common/CustomButton/CustomButton";
 type WithSettingsCounterPropsType = {
     startInputValue: number
     maxInputValue: number
-    isError: boolean
     isDisabled: boolean
     setStartInputValue: (value: number) => void
     setMaxInputValue: (value: number) => void
-    setIsError: (value: boolean) => void
     setIsDisabled: (value: boolean) => void
     setDisplayValues: () => void
 }
 
 export const WithSettingsCounter: FC<WithSettingsCounterPropsType> = ({
-                                                                          isError,
                                                                           isDisabled,
                                                                           startInputValue,
                                                                           maxInputValue,
                                                                           setStartInputValue,
                                                                           setMaxInputValue,
-                                                                          setIsError,
                                                                           setIsDisabled,
                                                                           setDisplayValues,
 

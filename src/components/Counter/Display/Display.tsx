@@ -9,7 +9,6 @@ type Display = {
     maxInputValue: number
     isDisabled: boolean
     setIsDisabled: (value: boolean) => void
-    setMaxInputValue: (value: number) => void
 
 }
 
@@ -20,37 +19,24 @@ export const Display: FC<Display> = ({
                                          startInputValue,
                                          maxInputValue,
                                          setIsDisabled,
-                                         setMaxInputValue,
                                      }) => {
-    const isErrorForInputsValues = maxInputValue < 0 || startInputValue < 0 || maxInputValue <= startInputValue
+    const isErrorForInputValues = maxInputValue < 0 || startInputValue < 0 || maxInputValue <= startInputValue
         ? isDisabled : !isDisabled
 
-    const isMaxCountValue = count === maxValue ? s.red : " ";
-
-    const isCountErrorClassName = count === maxValue ? s.error : " ";
-
-    if (startInputValue >= 0) {
-        setIsDisabled(isDisabled)
-
-    }
-    let checkInputsValues = false
-    checkInputsValues = startInputValue >= 0 || count > 0
-
+    const correctInputValues = count >= 0 && maxInputValue > 0 && count >= 0 && count !== maxInputValue
+    // const viewCount = (count === startInputValue) && correctInputValues && count
 
     return (
-        <div className={isMaxCountValue}>
-            {isErrorForInputsValues
-                ? <div
-                    className={s.error}>Некорректное значение
-                </div>
-                : startInputValue >= 0 && maxInputValue > 0
-                    ? <div
-                        className={isCountErrorClassName}>
-                        {checkInputsValues && <b>Установите значение и нажмите кнопку Set</b>}
-                    </div>
-                    : <div>{startInputValue}</div>
+        <div >
+            {isErrorForInputValues
+                ? <div className={s.error}><b>Некорректное значение</b></div>
+                : count === 0 && startInputValue >= 0 && maxInputValue
+                ? <div>{<b>Установите значение и нажмите кнопку Set</b>}</div>
+                : correctInputValues && <div>{count}</div>
+                    // ? <div>{<b>Установите значение и нажмите кнопку Set</b>}</div>
+
             }
         </div>
     );
 };
-//
+

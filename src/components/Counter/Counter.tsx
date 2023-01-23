@@ -42,7 +42,6 @@ export const Counter: FC<CounterPropsType> = ({
                     startInputValue={startInputValue}
                     maxInputValue={maxInputValue}
                     setIsDisabled={setIsDisabled}
-                    setMaxInputValue={setMaxInputValue}
                 />
             </div>
 
