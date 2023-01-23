@@ -2,14 +2,12 @@ import React, {useEffect, useState} from "react";
 import s from "./App.module.css";
 import {WithSettingsCounter} from "../components/WithSettingsCounter/WithSettingsCounter";
 import {Counter} from "../components/Counter/Counter";
-import {useLocalStorage} from "../hooks/useLocaLstorage";
 
 
 const App = () => {
     const maxCountValue = 5
     const minCountValue = 0
 
-    const [isError, setIsError] = useState(false)
     let [count, setCount] = useState(0)
     const [isDisabled, setIsDisabled] = useState(false)
     const [startInputValue, setStartInputValue] = useState(0)
@@ -68,14 +66,10 @@ const App = () => {
                     minValue={minCountValue}
                     maxValue={maxCountValue}
                     count={count}
-                    isError
-                    isDisabled
                     startInputValue={startInputValue}
                     maxInputValue={maxInputValue}
                     onClickIncrementHandler={onClickIncrementHandler}
                     onClickResetHandler={onClickResetHandler}
-                    setIsDisabled={setIsDisabled}
-                    setMaxInputValue={setMaxInputValue}
                 />
             </div>
         </div>

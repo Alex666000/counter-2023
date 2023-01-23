@@ -3,21 +3,17 @@ import s from "./Display.module.css";
 
 type Display = {
     count: number
-    maxValue: number
     isError: boolean
     startInputValue: number
     maxInputValue: number
     isDisabled: boolean
-    setIsDisabled: (value: boolean) => void
 }
 
 export const Display: FC<Display> = ({
                                          count,
-                                         maxValue, isError,
                                          isDisabled,
                                          startInputValue,
                                          maxInputValue,
-                                         setIsDisabled,
                                      }) => {
 
     const isErrorForInputValues = maxInputValue < 0 || startInputValue < 0 || maxInputValue <= startInputValue
