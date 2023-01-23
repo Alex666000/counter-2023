@@ -6,3 +6,8 @@
     color: red;
     font-size: 24px;
 }
+
+.active {
+    /*display: block;*/
+    color: #dd3355;
+}

@@ -7,6 +7,8 @@ type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonE
 type CustomButtonPropsType = DefaultButtonPropsType & {
     red?: boolean
     name: string
+    maxInputValue?: number
+    count?: number
     isDisabled: boolean
     onClick: () => void
 }
@@ -17,6 +19,8 @@ const CustomButton: FC<CustomButtonPropsType> = (
         className,
         name, isDisabled,
         onClick,
+        count,
+        maxInputValue,
         ...restProps // все остальные пропсы попадут в объект restProps, там же будет children
     }
 ) => {
@@ -24,12 +28,12 @@ const CustomButton: FC<CustomButtonPropsType> = (
 
     return (
         <button
-            className={finalClassName}
+            className={count === maxInputValue ? s.errorCount : ' '}
             name={name}
             disabled={isDisabled}
             onClick={onClick}
         >
-            {name}
+            <span className={s.errorCount}>{name}</span>
         </button>
     )
 }

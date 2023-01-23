@@ -20,6 +20,9 @@
     overflow: hidden;
     cursor: pointer;
 }
+.button span {
+    color: #dd3355;
+}
 
 .button:after {
     display: block;
@@ -79,3 +82,4 @@
 .button:disabled::before {
     z-index: -1;
 }
+

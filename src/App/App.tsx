@@ -10,13 +10,15 @@ const App = () => {
     const minCountValue = 0
 
     const [isError, setIsError] = useState(false)
-    const [count, setCount] = useState(0)
+    let [count, setCount] = useState(0)
     const [isDisabled, setIsDisabled] = useState(false)
+    const [startInputValue, setStartInputValue] = useState(0)
+    const [maxInputValue, setMaxInputValue] = useState(5)
 
 
 // localStorage logic
-    const [startInputValue, setStartInputValue] = useLocalStorage("startInputValue", 0)
-    const [maxInputValue, setMaxInputValue] = useLocalStorage("maxInputValue", 5)
+
+
 // handles
     const onClickIncrementHandler = () => {
         setCount(count + 1)
@@ -26,11 +28,25 @@ const App = () => {
         setCount(0)
     }
 
+    useEffect(() => {
+        // получаем с LS
+        let startInputValueString = localStorage.getItem("startInputValue") || "";
+        setStartInputValue(JSON.parse(startInputValueString))
+
+        const maxInputValueString = localStorage.getItem("maxInputValue") || ""
+        setMaxInputValue(JSON.parse(maxInputValueString))
+
+    },[])
+
     const setDisplayValues = () => {
         setStartInputValue(startInputValue)
-        setCount(startInputValue)
         setMaxInputValue(maxInputValue)
+        setCount(startInputValue)
+
         // установить LS...
+        localStorage.setItem("startInputValue", JSON.stringify(startInputValue))
+        localStorage.setItem("maxInputValue", JSON.stringify(maxInputValue))
+
     }
 
     return (

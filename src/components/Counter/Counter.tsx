@@ -48,11 +48,12 @@ export const Counter: FC<CounterPropsType> = ({
             <div className={s.footer}>
 
                 <div className={s.footerButton}>
-                    <CustomButton
-                        className={s.button}
-                        name={"inc"}
-                        isDisabled={count === maxValue}
-                        onClick={onClickIncrementHandler}
+                    <CustomButton count={count}
+                                  maxInputValue={maxInputValue}
+                                  className={s.button}
+                                  name={"inc"}
+                                  isDisabled={count === maxInputValue}
+                                  onClick={onClickIncrementHandler}
                     >
                     </CustomButton>
                 </div>
