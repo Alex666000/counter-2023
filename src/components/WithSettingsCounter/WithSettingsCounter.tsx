@@ -23,7 +23,6 @@ export const WithSettingsCounter: FC<WithSettingsCounterPropsType> = ({
                                                                           setDisplayValues,
 
                                                                       }) => {
-    // const checkStartInputValue = startInputValue >= 0 ? isDisabled : !isDisabled
 
     const isErrorForInputsValues = maxInputValue < 0 || startInputValue < 0 || maxInputValue <= startInputValue
        ? isDisabled : !isDisabled
@@ -36,7 +35,6 @@ export const WithSettingsCounter: FC<WithSettingsCounterPropsType> = ({
                     isErrorForInputsValues={isErrorForInputsValues}
                     startInputValue={startInputValue}
                     maxInputValue={maxInputValue}
-                    isError
                     setIsDisabled={setIsDisabled}
                     setStartInputValue={setStartInputValue}
                     setMaxInputValue={setMaxInputValue}

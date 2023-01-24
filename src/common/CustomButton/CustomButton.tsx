@@ -8,8 +8,10 @@ type CustomButtonPropsType = DefaultButtonPropsType & {
     red?: boolean
     name: string
     maxInputValue?: number
+    startInputValue?: number
     count?: number
-    isDisabled: boolean
+    isDisabled?: boolean
+    isDisabledCount?: boolean
     onClick: () => void
 }
 
@@ -18,7 +20,8 @@ const CustomButton: FC<CustomButtonPropsType> = (
         red,
         className,
         name, isDisabled,
-        onClick,
+        onClick,isDisabledCount,
+        startInputValue,
         count,
         maxInputValue,
         ...restProps // все остальные пропсы попадут в объект restProps, там же будет children
@@ -30,7 +33,7 @@ const CustomButton: FC<CustomButtonPropsType> = (
         <button
             className={count === maxInputValue ? s.errorCount : ' '}
             name={name}
-            disabled={isDisabled}
+            disabled={isDisabled || count === 5}
             onClick={onClick}
         >
             <span className={s.errorCount}>{name}</span>

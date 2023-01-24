@@ -16,21 +16,25 @@ export const Display: FC<Display> = ({
                                          maxInputValue,
                                      }) => {
 
-    const isErrorForInputValues = maxInputValue < 0 || startInputValue < 0 || maxInputValue <= startInputValue
-        ? isDisabled : !isDisabled
-
-    const correctInputValues = count >= 0 && maxInputValue > 0 && count >= 0
-    // console.log(correctInputValues)
-
-    return (
-        <div>
-            {isErrorForInputValues
-                ? <div className={s.error}><b>Некорректное значение</b></div>
-                : count === 0 && startInputValue >= 0 && maxInputValue
-                    ? <div>{<b>Установите значение и нажмите кнопку Set</b>}</div>
-                    : correctInputValues && <div className={maxInputValue === count ? s.active : ' '}>{count}</div>
-            }
+     return (
+        <div className={count === maxInputValue ? s.red : " "}>
+            <span>{count ? count : startInputValue}</span>
         </div>
     );
 };
 
+// let counterClassName = (count === maxValue) ? `${s.counter} ${s.counterErrorMaxValue}` : s.counter;
+
+
+
+
+
+/*
+<div>
+    {isErrorForInputValues
+        ? <div className={s.error}><b>Некорректное значение</b></div>
+        : count === 0 && startInputValue >= 0 && maxInputValue
+            ? <div>{<b>Установите значение и нажмите кнопку Set</b>}</div>
+            : correctInputValues && <div className={maxInputValue === count ? s.active : ' '}>{count}</div>
+    }
+</div>*/

@@ -6,7 +6,6 @@ import {isDisabled} from "@testing-library/user-event/dist/utils";
 type SettingsDisplayPropsType = {
     startInputValue: number
     maxInputValue: number
-    isError: boolean
     isErrorForInputsValues: boolean
     setIsDisabled: (value: boolean) => void
     setStartInputValue: (value: number) => void
@@ -14,7 +13,6 @@ type SettingsDisplayPropsType = {
 }
 
 export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
-                                                                  isError,
                                                                   isErrorForInputsValues,
                                                                   startInputValue,
                                                                   maxInputValue,
@@ -23,7 +21,7 @@ export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
                                                                   setMaxInputValue,
                                                               }) => {
 
-    isError = startInputValue < 0 || maxInputValue <= startInputValue
+   const isError = startInputValue < 0 || maxInputValue <= startInputValue
 
     const onMaxValueInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         setIsDisabled(!isDisabled)
@@ -37,7 +35,6 @@ export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
         setStartInputValue(newStartInputValue)
     }
 
-// т.к isError === true - применится класс к CustomInput у SettingsDisplay
     const isErrorStartInputClassName = startInputValue < 0 && isError || startInputValue === maxInputValue
         ? s.error
         : s.input
