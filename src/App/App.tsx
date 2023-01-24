@@ -13,16 +13,6 @@ const App = () => {
     const [maxInputValue, setMaxInputValue] = useState(5)
     const [editMode, setEditMode] = useState(false)
 
-// handles
-    const onClickIncrementHandler = () => {
-        setCount(count + 1)
-
-    }
-
-    const onClickResetHandler = () => {
-        setCount(0)
-    }
-
     useEffect(() => {
         // получаем с LS
         let startInputValueString = localStorage.getItem("startInputValue")
@@ -34,15 +24,33 @@ const App = () => {
 
     }, [])
 
+    const setLS = () => {
+        localStorage.setItem("startInputValue", JSON.stringify(startInputValue))
+        localStorage.setItem("maxInputValue", JSON.stringify(maxInputValue))
+    }
+
+// handles
+    const onClickIncrementHandler = () => {
+        setCount(count + 1)
+
+    }
+
+    const onClickResetHandler = () => {
+        setCount(0)
+    }
+
+
     const setDisplayValues = () => {
         setEditMode(!editMode)
         setIsDisabled(!isDisabled)
 
         setCount(startInputValue)
         setMaxInputValue(maxInputValue)
-
+        setLS()
     }
-    console.log([startInputValue,maxInputValue])
+
+    // проверка почему в браузере не отобразилось значение 5
+    // console.log([startInputValue,maxInputValue])
 
     return (
         <div className={s.wrapperCounters}>
