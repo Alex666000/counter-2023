@@ -1,42 +1,21 @@
 import React, {FC} from "react";
 import s from "./Display.module.css";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../../redux/store";
 
-type Display = {
-    count: number
-    isError: boolean
-    startInputValue: number
-    maxInputValue: number
-    isDisabled: boolean
-}
+type Display = {}
 
-export const Display: FC<Display> = ({
-                                         count,
-                                         isDisabled,
-                                         startInputValue,
-                                         maxInputValue,
-                                     }) => {
+export const Display: FC<Display> = () => {
+    const startInputValue = useSelector<AppRootStateType, number>(state => state.counter.startInputValue)
+    const count = useSelector<AppRootStateType, number>(state => state.counter.count)
+
+    const maxInputValue = useSelector<AppRootStateType, number>(state => state.counter.maxInputValue)
 
 
-
-     return (
+    return (
         <div className={count === maxInputValue ? s.red : " "}>
             <span>{count ? count : startInputValue}</span>
         </div>
     );
 };
 
-// let counterClassName = (count === maxValue) ? `${s.counter} ${s.counterErrorMaxValue}` : s.counter;
-
-
-
-
-
-/*
-<div>
-    {isErrorForInputValues
-        ? <div className={s.error}><b>Некорректное значение</b></div>
-        : count === 0 && startInputValue >= 0 && maxInputValue
-            ? <div>{<b>Установите значение и нажмите кнопку Set</b>}</div>
-            : correctInputValues && <div className={maxInputValue === count ? s.active : ' '}>{count}</div>
-    }
-</div>*/

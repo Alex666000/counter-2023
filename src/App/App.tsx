@@ -6,9 +6,6 @@ import {useSelector} from "react-redux";
 import {AppRootStateType} from "../redux/store";
 
 const App = () => {
-    const maxCountValue = 5
-    const minCountValue = 0
-
     const editMode = useSelector<AppRootStateType,boolean>(state => state.counter.editMode)
 
     return (
@@ -16,11 +13,7 @@ const App = () => {
             <div className={s.wrapperItem}>
                 {editMode
                     ? <WithSettingsCounter />
-                    : <Counter
-                        isDisabledCount={true}
-                        minCountValue={minCountValue}
-                        maxCountValue={maxCountValue}
-                    />
+                    : <Counter />
                 }
             </div>
         </div>

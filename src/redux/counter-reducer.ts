@@ -27,7 +27,6 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
             return state
     }
 }
-
 // actions
 export const incrementCountAC = (count: number) => ({type: "INCREMENT-COUNT", count} as const)
 export const resetCountValueAC = (counterValue: number) => ({type: "RESET-COUNTER-VALUE", counterValue} as const)
@@ -40,9 +39,8 @@ export const setStartInputValueAC = (value: number) => ({
     value
 } as const)
 
-// types-------------------------------------------------------------
+// types
 type InitialStateType = typeof initialState
-//-------------------------------------------------------------------
 
 export type SetEditModeCounterActionType = ReturnType<typeof setEditModeCounterAC>;
 export type SetIsDisabledActionType = ReturnType<typeof setIsDisabledAC>;

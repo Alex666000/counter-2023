@@ -20,18 +20,20 @@ const CustomButton: FC<CustomButtonPropsType> = (
         red,
         className,
         name, isDisabled,
-        onClick,isDisabledCount,
+        onClick, isDisabledCount,
         startInputValue,
         count,
         maxInputValue,
         ...restProps // все остальные пропсы попадут в объект restProps, там же будет children
     }
 ) => {
-    const finalClassName = `${s.button} ${red ? s.red : s.default} ${className}`
+    const finalClassName = `${count === maxInputValue} || ${count && count <= 0} 
+    ? ${s.errorCount} 
+    : ${s.button} ${red ? s.red : s.default} ${className}`
 
     return (
         <button
-            className={count === maxInputValue ? s.errorCount : ' '}
+            className={finalClassName}
             name={name}
             disabled={isDisabled || count === 5}
             onClick={onClick}

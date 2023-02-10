@@ -6,20 +6,24 @@
         left: 130%;
     }
 }
+
 .default {
     background: #003300;
     color: #99ff99;
     outline: none;
 }
+
 .red {
     background: #dd3355;
 }
+
 .button {
     position: relative;
     margin: 10px;
     overflow: hidden;
     cursor: pointer;
 }
+
 .button span {
     color: #dd3355;
 }
@@ -67,19 +71,24 @@
 }
 
 .button:active {
-    background: #99ff99 ;
+    background: #99ff99;
 }
 
 .button:disabled {
-    color: #006500;
     cursor: auto;
+    background-color: #a69797;
+    opacity: 0.4;
+}
+
+.button:disabled span {
+    color: black;
 }
 
 .button:disabled::after {
-    z-index: -1;
+    z-index: -3;
 }
 
 .button:disabled::before {
-    z-index: -1;
+    z-index: -5;
 }
 
