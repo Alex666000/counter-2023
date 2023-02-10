@@ -2,32 +2,48 @@ import React, {FC} from "react";
 import s from "./Counter.module.css";
 import {CustomButton} from "../../common/CustomButton/CustomButton";
 import {Display} from "./Display/Display";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    incrementCountAC, resetCountValueAC,
+    setCountAC,
+    setEditModeCounterAC,
+    setIsDisabledAC,
+    setMaxInputValueAC
+} from "../../redux/counter-reducer";
+import {AppRootStateType} from "../../redux/store";
 
 type CounterPropsType = {
-    minValue: number
-    maxValue: number
-    count: number
-    onClickIncrementHandler: () => void
-    onClickResetHandler: () => void
-    setDisplayValues: () => void
-    setCount: (value: number) => void
-    startInputValue: number
-    maxInputValue: number
+    minCountValue: number
+    maxCountValue: number
     isDisabledCount: boolean
 }
 
 export const Counter: FC<CounterPropsType> = ({
-                                                  minValue, maxValue,
-                                                  count,
-                                                  startInputValue,
-                                                  maxInputValue,
-                                                  setCount,
-                                                  onClickIncrementHandler,
-                                                  onClickResetHandler, setDisplayValues,
-
+                                                  minCountValue, maxCountValue,
                                               }) => {
+    const dispatch = useDispatch()
 
-    const disabledInc = 0
+    const editMode = useSelector<AppRootStateType, boolean>(state => state.counter.editMode)
+    const isDisabled = useSelector<AppRootStateType, boolean>(state => state.counter.editMode)
+    const startInputValue = useSelector<AppRootStateType, number>(state => state.counter.startInputValue)
+    const maxInputValue = useSelector<AppRootStateType, number>(state => state.counter.maxInputValue)
+    const count = useSelector<AppRootStateType, number>(state => state.counter.count)
+
+// handlers
+    const onClickIncrementHandler = () => {
+        dispatch(incrementCountAC(count + 1))
+    }
+
+    const onClickResetHandler = () => {
+        dispatch(resetCountValueAC(0))
+    }
+
+    const setDisplayValues = () => {
+        dispatch(setEditModeCounterAC(!editMode))
+        dispatch(setIsDisabledAC(!isDisabled))
+        dispatch(setCountAC(startInputValue))
+        dispatch(setMaxInputValueAC(maxInputValue))
+    }
 
     return (
         <>
@@ -49,7 +65,7 @@ export const Counter: FC<CounterPropsType> = ({
                                   startInputValue={startInputValue}
                                   className={s.button}
                                   name={"inc"}
-                                  isDisabled={count === startInputValue ? false : count === maxInputValue ? true : false}
+                                  isDisabled={count === startInputValue ? false : count === maxInputValue}
                                   onClick={onClickIncrementHandler}
                     >
                     </CustomButton>

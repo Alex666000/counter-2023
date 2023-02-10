@@ -16,6 +16,8 @@ export const Display: FC<Display> = ({
                                          maxInputValue,
                                      }) => {
 
+
+
      return (
         <div className={count === maxInputValue ? s.red : " "}>
             <span>{count ? count : startInputValue}</span>

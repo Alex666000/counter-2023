@@ -2,37 +2,35 @@ import React, {ChangeEvent, FC, useState} from "react";
 import s from "./SettingsDisplay.module.css";
 import CustomInput from "../../../common/CustomInput/CustomInput";
 import {isDisabled} from "@testing-library/user-event/dist/utils";
+import {useDispatch, useSelector} from "react-redux";
+import {setIsDisabledAC, setMaxInputValueAC, setStartInputValueAC} from "../../../redux/counter-reducer";
+import {AppRootStateType} from "../../../redux/store";
 
 type SettingsDisplayPropsType = {
-    startInputValue: number
-    maxInputValue: number
     isErrorForInputsValues: boolean
-    setIsDisabled: (value: boolean) => void
-    setStartInputValue: (value: number) => void
-    setMaxInputValue: (value: number) => void
 }
 
 export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
                                                                   isErrorForInputsValues,
-                                                                  startInputValue,
-                                                                  maxInputValue,
-                                                                  setIsDisabled,
-                                                                  setStartInputValue,
-                                                                  setMaxInputValue,
                                                               }) => {
+    const dispatch = useDispatch()
 
-   const isError = startInputValue < 0 || maxInputValue <= startInputValue
+    const startInputValue = useSelector<AppRootStateType, number>(state => state.counter.startInputValue)
+    const maxInputValue = useSelector<AppRootStateType, number>(state => state.counter.maxInputValue)
+
+    const isError = startInputValue < 0 || maxInputValue <= startInputValue
 
     const onMaxValueInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setIsDisabled(!isDisabled)
+        dispatch(setIsDisabledAC(!isDisabled))
         const newSetMaxInputValue = Number(e.currentTarget.value)
-        setMaxInputValue(newSetMaxInputValue)
+        dispatch(setMaxInputValueAC(newSetMaxInputValue))
     }
 
     const onStartValueInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setIsDisabled(!isDisabled)
+        dispatch(setIsDisabledAC(!isDisabled))
         const newStartInputValue = Number(e.currentTarget.value)
-        setStartInputValue(newStartInputValue)
+
+        dispatch(setStartInputValueAC(newStartInputValue))
     }
 
     const isErrorStartInputClassName = startInputValue < 0 && isError || startInputValue === maxInputValue
@@ -64,32 +62,6 @@ export const SettingsDisplay: FC<SettingsDisplayPropsType> = ({
         </div>
     );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // isErrorForInputsValues ? s.error :
