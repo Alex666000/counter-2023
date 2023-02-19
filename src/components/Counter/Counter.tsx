@@ -17,10 +17,14 @@ export const Counter: FC<CounterPropsType> = ({}) => {
 
     const onClickIncrementHandler = () => {
         // dispatch(incrementCountAC())
-        // for LS code:
+            // for LS code:
         /*dispatch(incValuesTC(count))*/
         // count + 1 так как на дисплее на 1 больше чем в ЛС всегда = синхронизируем
-        dispatch(incValuesTC(count + 1))
+        /*dispatch(incValuesTC(count + 1))*/
+
+            // 2 способ с использованеим getState
+        dispatch(incValuesTC(count))
+
     }
 
     const onClickResetHandler = () => {
