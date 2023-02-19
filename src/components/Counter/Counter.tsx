@@ -3,7 +3,7 @@ import s from "./Counter.module.css";
 import {CustomButton} from "../../common/CustomButton/CustomButton";
 import {Display} from "./Display/Display";
 import {useDispatch, useSelector} from "react-redux";
-import {incValuesTC, resetCountValueAC, setCountAC, setValueForLocalStorageTC} from "../../redux/counter-reducer";
+import {incrementCountAC, resetCountValueAC, setCountAC} from "../../redux/counter-reducer";
 import {AppRootStateType} from "../../redux/store";
 import {useSetDisplayValue} from "../../hooks/useSetDisplayValue";
 
@@ -15,8 +15,10 @@ export const Counter: FC<CounterPropsType> = ({}) => {
 
     //когда загрузится Counter я буду диспатчить санку и получать значение
     // после перезагрузки ЛС сохранится на экране
+
     useEffect(() => {
-        dispatch(setValueForLocalStorageTC())
+        // 2 способ
+        // dispatch(setValueForLocalStorageTC())
     },[])
 
 
@@ -31,7 +33,7 @@ export const Counter: FC<CounterPropsType> = ({}) => {
         /*dispatch(incValuesTC(count + 1))*/
 
             // 2 способ с использованеим getState
-        dispatch(incValuesTC(count))
+        dispatch(incrementCountAC())
 
     }
 

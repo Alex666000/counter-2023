@@ -1,4 +1,3 @@
-import {Dispatch} from "react";
 import {AppRootStateType} from "./store";
 
 const initialState = {
@@ -67,13 +66,13 @@ type CounterActionsType = | SetEditModeCounterActionType | SetIsDisabledActionTy
 
 // Thunks
 
-// 1 способ в лоб - старый
-/* export const incValuesTC: any = (value: number) => (dispatch: any) => {
+/*                     // 1 способ в лоб - старый
+/!* export const incValuesTC: any = (value: number) => (dispatch: any) => {
     // так как ЛС - это сайд эффект делаем его в санке
     localStorage.setItem("counterValue", JSON.stringify(value))
     dispatch(incrementCountAC())
-} */
-// 2 способ с использованеим getState
+} *!/
+                        // 2 способ с использованеим getState
 export const incValuesTC: any = () => (dispatch: any, getState: () => AppRootStateType) => {
     // достаем текущее значение
     const currentValue = getState().counter.count
@@ -88,4 +87,7 @@ export const setValueForLocalStorageTC: any = () => (dispatch: any) => {
         dispatch(setValueForLocalStorageAC(newValue))
     }
     dispatch(incrementCountAC())
-}
+}*/
+
+                           // 3 способ как надо делать по Дэну Абрамову
+// для этого закоментим санки
