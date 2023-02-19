@@ -1,9 +1,9 @@
-import React, {FC} from "react";
+import React, {FC, useEffect} from "react";
 import s from "./Counter.module.css";
 import {CustomButton} from "../../common/CustomButton/CustomButton";
 import {Display} from "./Display/Display";
 import {useDispatch, useSelector} from "react-redux";
-import {incrementCountAC, incValuesTC, resetCountValueAC, setCountAC} from "../../redux/counter-reducer";
+import {incValuesTC, resetCountValueAC, setCountAC, setValueForLocalStorageTC} from "../../redux/counter-reducer";
 import {AppRootStateType} from "../../redux/store";
 import {useSetDisplayValue} from "../../hooks/useSetDisplayValue";
 
@@ -12,6 +12,14 @@ type CounterPropsType = { }
 export const Counter: FC<CounterPropsType> = ({}) => {
     const dispatch = useDispatch()
     const count = useSelector<AppRootStateType, number>(state => state.counter.count)
+
+    //когда загрузится Counter я буду диспатчить санку и получать значение
+    // после перезагрузки ЛС сохранится на экране
+    useEffect(() => {
+        dispatch(setValueForLocalStorageTC())
+    },[])
+
+
 
     const {startInputValue, maxInputValue, setDisplayValues} = useSetDisplayValue()
 
@@ -26,6 +34,8 @@ export const Counter: FC<CounterPropsType> = ({}) => {
         dispatch(incValuesTC(count))
 
     }
+
+
 
     const onClickResetHandler = () => {
         dispatch(resetCountValueAC(0))

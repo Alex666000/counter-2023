@@ -80,3 +80,12 @@ export const incValuesTC: any = () => (dispatch: any, getState: () => AppRootSta
     localStorage.setItem("counterValue", JSON.stringify(currentValue + 1))
     dispatch(incrementCountAC())
 }
+// после перезагрузки ЛС сохранится на экране
+export const setValueForLocalStorageTC: any = () => (dispatch: any) => {
+   const valueString = localStorage.getItem("counterValue")
+    if (valueString) {
+        let newValue = JSON.parse(valueString)
+        dispatch(setValueForLocalStorageAC(newValue))
+    }
+    dispatch(incrementCountAC())
+}
