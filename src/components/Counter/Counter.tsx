@@ -3,7 +3,7 @@ import s from "./Counter.module.css";
 import {CustomButton} from "../../common/CustomButton/CustomButton";
 import {Display} from "./Display/Display";
 import {useDispatch, useSelector} from "react-redux";
-import {incrementCountAC, resetCountValueAC, setCountAC} from "../../redux/counter-reducer";
+import {incrementCountAC, incValuesTC, resetCountValueAC, setCountAC} from "../../redux/counter-reducer";
 import {AppRootStateType} from "../../redux/store";
 import {useSetDisplayValue} from "../../hooks/useSetDisplayValue";
 
@@ -16,7 +16,11 @@ export const Counter: FC<CounterPropsType> = ({}) => {
     const {startInputValue, maxInputValue, setDisplayValues} = useSetDisplayValue()
 
     const onClickIncrementHandler = () => {
-        dispatch(incrementCountAC(count + 1))
+        // dispatch(incrementCountAC())
+        // for LS code:
+        /*dispatch(incValuesTC(count))*/
+        // count + 1 так как на дисплее на 1 больше чем в ЛС всегда = синхронизируем
+        dispatch(incValuesTC(count + 1))
     }
 
     const onClickResetHandler = () => {
